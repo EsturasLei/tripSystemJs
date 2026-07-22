@@ -14,7 +14,7 @@ class DriverService {
 
     }
 
-    async updateDriver(id, name, licenseNumber){
+    static async updateDriver(id, name, licenseNumber){
         if (!id || !name || !licenseNumber) {
             throw new Error("Missing tracking ID or update criteria");
         }
@@ -26,18 +26,18 @@ class DriverService {
             throw error;
 
         }
-        return await driverRepository.update(id, name, licenseNumber);
+        return await DriverRepository.update(id, name, licenseNumber);
 
     }
-    async deleteDriver(id) {
-        const driverExists = await driverRepository.findById(id);
+    static async deleteDriver(id) {
+        const driverExists = await DriverRepository.findById(id);
         if(!driverExists){
             const error = new Error('driver not found');
             error.statusCode = 404;
             throw error;
 
         }
-        return await driverRepository.delete(id);
+        return await DriverRepository.delete(id);
 
     }
 }

@@ -16,20 +16,30 @@ class DriverRepository {
         const result = await pool.query(query);
         return result.rows; 
     }
-    async update(id,name,licenseNumber){
+    static async update(id,name,licenseNumber){
         const result = await pool.query(
             'UPDATE drivers SET name = $1, license_number = $2 WHERE id = $3 RETURNING *',
             [name, licenseNumber, id]
         );
         return result.rows[0];
     }
-    async delete(id){
-        const result = await pool.query('DELETE from drivers WHERE id = $1 RETURNING *', [id]);
-        return result.row   
+    static async findById(id) {
+        const result = await pool.query(
+            'SELECT * FROM drivers WHERE id = $1',
+            [id]
+        );
+        return result.rows[0];
+    }
+    static async delete(id){    
+        const result = await pool.query(
+            'DELETE FROM drivers WHERE id = $1 RETURNING *', 
+            [id]
+        );
+        return result.rows[0];
     }
 
 }
 
 console.log("pool check", pool);
 
-module.exports = DriverRepository;
+module.exports = DriverRepository;  

@@ -10,25 +10,34 @@
     <div class="container">
         <h1>Diver Managment System</h1>
         <hr>
-        <h2>Add New Driver</h2>
+        <h2 id="formTitle">Add New Driver</h2>
         <div id="errorMessage" class="error"></div>
+        <div id="message" class="message"></div>
         <form id="driverForm">
+            <input type="hidden" id="driverId" value="">
+
             <input type="text" id="driverName" placeholder="Driver Full Name" required>
             <input type="text" id="licenseNumber" placeholder="license Number (e.g., DL-12345)" required>
-            <button type="submit">Add Driver</button>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="submitBtn">Add Driver</button>
+                <button type="button" id="cancelEditBtn" style="background-color: var(--text-muted); display: none;">Cancel Edit</button>
+            </div>
         </form>
 
         <h2>Current Driver</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>License Number</th>
-                </tr>
-            </thead>
-            <tbody id="driverTableBody"></tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>License Number</th>
+                        <th style="text-align: right ;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="driverTableBody"></tbody>
+            </table>
+        </div>
     </div>
     <script src="/js/driver.js"></script>
 </body>

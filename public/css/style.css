@@ -160,3 +160,14 @@ td {
     color: var(--text-muted);
     font-style: italic;
 }
+.message{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+
+.success{
+    background: lightgreen;
+    
+}
