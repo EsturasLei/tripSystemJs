@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Trip System</title>
+    <link rel="stylesheet" href="/css/auth.css">
+    <script src="/js/signup.js" defer></script>
+</head>
+<body>
+    <main class="auth-card">
+        <h1>Create an account</h1>
+        <p class="subtitle">Register to manage your trip requests.</p>
+
+        <form id="signupForm">
+            <label for="name">Full name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+                maxlength="100"
+            >
+
+            <label for="email">Email address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+                maxlength="255"
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+            >
+
+            <label for="confirmPassword">Confirm password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                autocomplete="new-password"
+                minlength="8"
+                required
+            >
+
+            <button type="submit" id="signupButton">
+                Create account
+            </button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="/login.html">Log in</a>
+        </p>
+
+         <li><a href="/pages/drivers.html">Drivers</a></li>
+        <li><a href="/pages/vehicles.html">Vehicles</a></li>
+        <li><a href="/pages/requestForm.html">Create Trip</a></li>
+    </main>
+</body>
+</html>

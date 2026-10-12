@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model drivers {
+  id             Int       @id @default(autoincrement())
+  name           String?   @db.VarChar(100)
+  license_number String?   @db.VarChar(50)
+  created_at     DateTime? @default(now()) @db.Timestamp(6)
+  updated_at     DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model vehicles {
+  id           Int       @id @default(autoincrement())
+  plate_number String    @db.VarChar(20)
+  model        String?   @db.VarChar(100)
+  brand        String?   @db.VarChar(100)
+  status       String?   @default("available") @db.VarChar(30)
+  created_at   DateTime? @default(now()) @db.Timestamp(6)
+  updated_at   DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model TripRequest {
+  id         Int         @id @default(autoincrement())
+  requestor  String
+  date       DateTime
+  timeStart  String
+  timeEnd    String
+  purpose    String
+
+  userId     Int?
+  user       User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  passengers Passenger[]
+}
+
+model Passenger {
+  id            Int         @id @default(autoincrement())
+  tripRequestId Int
+  name          String
+  
+    tripRequest   TripRequest @relation(fields: [tripRequestId], references: [id], onDelete: Cascade)
+  }
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  name         String        @db.VarChar(100)
+  email        String        @unique @db.VarChar(255)
+  passwordHash String
+  role         UserRole      @default(USER)
+  createdAt    DateTime      @default(now())
+
+  tripRequests TripRequest[]
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Diver Managment System</h1>
+        <hr>
+        <h2 id="formTitle">Add New vehicle</h2>
+        <div id="errorMessage" class="error"></div>
+        <div id="message" class="message"></div>      
+        <form id="vehicleForm">
+            <input type="hidden" id="vehicleId" value="">
+            <input type="text" id="plateNumber" placeholder="Plate Number" required>
+            <input type="text" id="brand" placeholder="Brand" required>
+            <input type="text" id="model" placeholder="model" required>
+            <select name="status" id="status">
+                <option value="Available">Available</option>
+                <option value="In Use">In Use</option>
+                <option value="Under Maintenance">Under Maintenance</option>
+            </select>
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="submitBtn">Add vehicle</button>
+                <button type="button" id="cancelEditBtn" style="background-color: var(--text-muted); display: none;">Cancel Edit</button>
+            </div>
+        </form>
+
+        <h2>Current Vehicle</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Plate Number</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Status</th>
+                        <th style="text-align: right ;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicleTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/js/vehicle.js"></script>
+</body>
+</html> 

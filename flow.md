@@ -234,3 +234,28 @@ Controllers know how to handle the HTTP request.
 Services know what business rules to apply.
 Repositories know how to access the database.
 Databases simply store and retrieve data.
+
+
+
+For MVC, keep naming consistent:
+
+Repository:
+findAll()
+findById()
+create()
+update()
+delete()
+
+Service:
+getAllDrivers()
+getDriverById()
+createDriver()
+updateDriver()
+deleteDriver()
+
+Controller:
+getDrivers()
+getDriver()
+createDriver()
+updateDriver()
+deleteDriver()

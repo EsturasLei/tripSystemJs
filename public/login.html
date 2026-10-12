@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Trip System</title>
+    <link rel="stylesheet" href="/css/auth.css">
+    <script src="/js/login.js" defer></script>
+</head>
+<body>
+    <main class="auth-card">
+        <h1>Welcome back</h1>
+        <p class="subtitle">Log in to your Trip System account.</p>
+
+        <form id="loginForm">
+            <label for="email">Email address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="loginButton">Log in</button>
+            <p id="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <p>Don't have an account? <a href="/signup.html">Sign up</a></p>
+    </main>
+</body>
+</html>
+```

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageBox.style.display = "none"
         }, 3000);
     }
+    
     async function fetchDrivers() {
         try{
             const response = await fetch(API_URL);
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             drivers.forEach(driver => {
                 const row = document.createElement('tr');
                 const license = driver.license_number || driver.licenseNumber;
+                
                 row.innerHTML = `
                     <td>${driver.id}</td>
                     <td>${driver.name}</td>
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     }
+    //for edit and updat
     function attachEventListeners(){
 
         document.querySelectorAll('.edit-btn').forEach(btn =>{

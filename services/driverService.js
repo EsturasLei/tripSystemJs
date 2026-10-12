@@ -1,4 +1,4 @@
-const DriverRepository = require('../repositories/driverRepository')
+const DriverRepository = require('../repositories/driverRepository');
 
 class DriverService {
     static async registerDriver(name, licenseNumber){
