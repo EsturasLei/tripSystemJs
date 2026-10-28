@@ -206,6 +206,8 @@ requestForm.addEventListener("submit", async event => {
     const isEditing = Boolean(requestId.value);
 
     try {
+        // console.log("isEditing:", isEditing);
+        // console.log("requestId:", requestId.value);
         const response = await fetch(
             isEditing ? `${API_URL}/${requestId.value}` : API_URL,
             {
