@@ -54,40 +54,47 @@ class RequestService {
             passengers: cleanedPassengers
         };
     }
-    static async getAll() {
-        return RequestRepository.findAll();
+    static async getAll(userId, role) {
+        return RequestRepository.findAll(userId, role);
     }
 
-    static async getById(id) {
-        const request = await RequestRepository.findById(id);
+    static async getById(id, userId, role) {
+        const request = await RequestRepository.findById(id, userId, role);
 
         if (!request) {
-            throw new Error("Trip request not found.");
+            const error = new Error("Trip request not found.");
+            error.status = 404;
+            throw error;
         }
 
         return request;
     }
 
     static async create(data, userId) {
-    return RequestRepository.create(data, userId);
+        const cleanedData = this.validate(data);
+        return RequestRepository.create(cleanedData, userId);
     }
 
-    static async update(id, data) {
+    static async update(id, data, userId, role) {
         const cleanedData = this.validate(data);
-        const request = await RequestRepository.update(id, cleanedData);
+        const request = await RequestRepository.update(id, cleanedData, userId, role);
 
         if (!request) {
-            throw new Error("Trip request not found.");
+            const error = new Error("Trip request not found.");
+            error.status = 404;
+            throw error;
         }
 
         return request;
     }
 
-    static async delete(id) {
-        const deleted = await RequestRepository.delete(id);
+    static async delete(id, userId, role) {
+        const deleted = await RequestRepository.delete(id, userId, role);
 
         if (!deleted) {
-            throw new Error("Trip request not found.");
+           const error = new Error("Trip request not found.");
+            error.status = 404;
+            throw error;
         }
 
         return deleted;
